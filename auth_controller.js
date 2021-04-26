@@ -11,8 +11,11 @@ class authController {
         return res.status(400).json(message: 'Username is busy!')
       }
 
-      bcrypt.hash("B4c0/\/", salt, function (err, hash) { });
-      const user = new User({ username, })
+      const hashPassword = bcrypt.hashSync(password, 4);
+      const userRole = await Role.findOne({ value: "USER" }) // РОЛЬ Юзера обычный юзер
+      const user = new User({ username, password: hashPassword, roles: [] }) // передам хешпароль на базу
+      await user.save()
+      return res.json('Registration success')
 
     } catch (error) {
       console.log(error)
