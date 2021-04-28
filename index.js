@@ -2,12 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const authRouter = require('./auth_router')
 const PORT = process.env.PORT || 5000
+                                   //<dbPassword>                             // dbName
 const conUrl = 'mongodb+srv://qwerty:qwerty1234@cluster0.qyjr0.mongodb.net/node-authn?retryWrites=true&w=majority'
-
 
 const app = express()
 
-app.use(express.json())
+app.use(express.json()) // для поддержки формат json
 app.use("/auth", authRouter)
 
 const start = async () => {
