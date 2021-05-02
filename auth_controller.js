@@ -9,7 +9,7 @@ const generateAccessToken = (id, roles) => { // внутрь пайлода сп
     id,
     roles
   }
-  return jwt.sign(payload, secret, {expiresIn: '24h'}) // вернем токен и если он рабочий 24 часа
+  return jwt.sign(payload, secret, {expiresIn: '24h'}) // вернем токен и он будеть рабочим 24 часа
 }
 
 class authController {
